@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const placeholderImg = 'https://picsum.photos/140/100';
 
@@ -17,6 +18,10 @@ const MovieList = props => {
       ))}
     </div>
   );
+};
+
+MovieList.propTypes = {
+  allMovies: PropTypes.array,
 };
 
 export default MovieList;
