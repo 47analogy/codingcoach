@@ -3,10 +3,11 @@ import React from 'react';
 const placeholderImg = 'https://picsum.photos/140/100';
 
 const MovieList = props => {
+  const { movies } = props;
+
   return (
     <div>
-      <h3>All Movies</h3>
-      {props.allMovies.map(movie => (
+      {movies.map(movie => (
         <div key={movie.id}>
           <li>{movie.title}</li>
           <li>
