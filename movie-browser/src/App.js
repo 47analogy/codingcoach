@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import MovieList from './components/MovieList';
 import Button from './components/Button';
-import { fetchData } from './api';
+import { fetchData } from './helpers/api';
+import { movieData } from './helpers/movieData';
 
 const URL = 'https://ghibliapi.herokuapp.com/films';
 
 class App extends Component {
   state = {
-    movies: [],
+    allMovies: [],
+    trendingMovies: [],
     showMovies: false,
     buttonText: 'Show Movies', // no movies displaying on initial render
   };
@@ -16,7 +18,8 @@ class App extends Component {
     fetchData(URL)
       .then(res => {
         this.setState({
-          movies: res,
+          allMovies: movieData(res),
+          trendingMovies: movieData(res.mostViews),
         });
       })
       .catch(err => {
@@ -28,19 +31,21 @@ class App extends Component {
     const { showMovies } = this.state;
 
     this.setState({
-      showMovies: !this.state.showMovies,
+      showMovies: !showMovies,
       buttonText: showMovies ? 'Show Movies' : 'Hide Movies',
     });
   };
 
   render() {
-    const { movies, buttonText, showMovies } = this.state;
-
+    const { allMovies, buttonText, showMovies, trendingMovies } = this.state;
     return (
       <div>
         <h1>Movie Browser</h1>
+        <h3>Most Viewed Movies</h3>
+        <MovieList movies={trendingMovies} />
+        <h3>All Movies</h3>
         <Button buttonName={buttonText} onClick={this.handleShowMovies} />
-        {showMovies && <MovieList allMovies={movies} />}
+        {showMovies && <MovieList movies={allMovies} />}
       </div>
     );
   }
