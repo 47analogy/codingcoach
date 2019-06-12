@@ -4,8 +4,14 @@
 export const movieData = jsonData => {
   const movieData = jsonData;
 
-  // most viewed movies
-  const popularMovie = movieData.filter(movie => movie.release_date > 2006);
+  // top most viewed movies
+  const popularMovie = movieData
+    .filter(movie => movie.rt_score > 94)
+    .sort((a, b) => b.rt_score - a.rt_score);
+
+  while (popularMovie.length > 6) {
+    popularMovie.pop();
+  }
 
   // TODO: feature movie
 
