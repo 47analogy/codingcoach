@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import MovieList from './components/MovieList';
 import Button from './components/Button';
-import { fetchData } from './api';
+import { fetchData } from './helpers/api';
+import { movieData } from './helpers/movieData';
 
 const URL = 'https://ghibliapi.herokuapp.com/films';
 
@@ -17,9 +18,9 @@ class App extends Component {
     fetchData(URL)
       .then(res => {
         this.setState({
-          allMovies: res,
+          allMovies: movieData(res),
+          trendingMovies: movieData(res.mostViews),
         });
-        this.showTrendingMovies(res);
       })
       .catch(err => {
         console.log(err);
@@ -35,21 +36,8 @@ class App extends Component {
     });
   };
 
-  showTrendingMovies = movieData => {
-    let randomMovies = [];
-
-    for (let i = 0; i < 12; i += 2) {
-      randomMovies.push(movieData[i]);
-    }
-
-    this.setState({
-      trendingMovies: randomMovies,
-    });
-  };
-
   render() {
     const { allMovies, buttonText, showMovies, trendingMovies } = this.state;
-
     return (
       <div>
         <h1>Movie Browser</h1>
