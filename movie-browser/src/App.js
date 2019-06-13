@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieList from './components/MovieList';
 import Button from './components/Button';
+import FeatureMovie from './components/FeatureMovie';
 import { fetchData } from './helpers/api';
 import { movieData } from './helpers/movieData';
 
@@ -10,6 +11,7 @@ class App extends Component {
   state = {
     allMovies: [],
     trendingMovies: [],
+    featureMovie: [],
     showMovies: false,
     buttonText: 'Show Movies', // no movies displaying on initial render
   };
@@ -20,6 +22,7 @@ class App extends Component {
         this.setState({
           allMovies: movieData(res),
           trendingMovies: movieData(res.mostViews),
+          featureMovie: movieData(res.feature),
         });
       })
       .catch(err => {
@@ -37,10 +40,20 @@ class App extends Component {
   };
 
   render() {
-    const { allMovies, buttonText, showMovies, trendingMovies } = this.state;
+    const {
+      allMovies,
+      buttonText,
+      showMovies,
+      trendingMovies,
+      featureMovie,
+    } = this.state;
+
     return (
       <div>
         <h1>Movie Browser</h1>
+        <h3>Feature Movie</h3>
+        <FeatureMovie movie={featureMovie} />
+        ...Coming Soon
         <h3>Most Viewed Movies</h3>
         <MovieList movies={trendingMovies} />
         <h3>All Movies</h3>

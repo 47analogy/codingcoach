@@ -13,9 +13,8 @@ export const movieData = jsonData => {
     popularMovie.pop();
   }
 
-  // TODO: feature movie
-
   movieData.mostViews = popularMovie;
+  movieData.feature = [popularMovie[3]];
 
   return movieData;
 };
