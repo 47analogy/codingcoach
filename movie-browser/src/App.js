@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieList from './components/MovieList';
 import Button from './components/Button';
-import FeatureMovie from './components/FeatureMovie';
+// import FeatureMovie from './components/FeatureMovie';
 import { fetchData } from './helpers/api';
 import { movieData } from './helpers/movieData';
 
@@ -52,7 +52,7 @@ class App extends Component {
       <div>
         <h1>Movie Browser</h1>
         <h3>Feature Movie</h3>
-        <FeatureMovie movie={featureMovie} />
+        {/* <FeatureMovie movie={featureMovie} /> */}
         ...Coming Soon
         <h3>Most Viewed Movies</h3>
         <MovieList movies={trendingMovies} />
