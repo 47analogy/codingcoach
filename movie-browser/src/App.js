@@ -52,7 +52,7 @@ class App extends Component {
       <div>
         <h1>Movie Browser</h1>
         <h3>Feature Movie</h3>
-        <FeatureMovie movie={featureMovie} />
+        <FeatureMovie movies={featureMovie} />
         <h3>Most Viewed Movies</h3>
         <MovieList movies={trendingMovies} />
         <h3>All Movies</h3>

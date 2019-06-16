@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 const placeholderImg = 'https://picsum.photos/140/100';
 
 const FeatureMovie = props => {
-  const { movie } = props;
+  const { movies } = props;
 
   return (
     <div>
-      {movie.map(featMovie => (
+      {movies.map(featMovie => (
         <div key={featMovie.id}>
           <li>{featMovie.title}</li>
           <li>{featMovie.description}</li>
