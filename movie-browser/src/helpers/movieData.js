@@ -15,7 +15,7 @@ export const movieData = jsonData => {
   }
 
   // feature movie
-  featureMovie.push(movieData[Math.floor(Math.random() * 19)]);
+  featureMovie.push(movieData[Math.floor(Math.random() * 20)]);
 
   movieData.mostViews = popularMovie;
   movieData.feature = featureMovie;
