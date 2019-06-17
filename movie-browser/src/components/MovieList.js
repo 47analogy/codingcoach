@@ -17,15 +17,13 @@ const MovieList = props => {
     <div>
       <CardWrapper>
         {movies.map(movie => (
-          <Card>
-            <div key={movie.id}>
-              <CardBody>
-                <CardTitle>{movie.title}</CardTitle>
-                <CardImage>
-                  <img src={placeholderImg} alt="placeholder" />
-                </CardImage>
-              </CardBody>
-            </div>
+          <Card key={movie.id}>
+            <CardBody>
+              <CardTitle>{movie.title}</CardTitle>
+              <CardImage>
+                <img src={placeholderImg} alt="placeholder" />
+              </CardImage>
+            </CardBody>
           </Card>
         ))}
       </CardWrapper>

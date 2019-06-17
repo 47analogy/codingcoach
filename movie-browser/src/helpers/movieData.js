@@ -3,6 +3,7 @@
 
 export const movieData = jsonData => {
   const movieData = jsonData;
+  const featureMovie = [];
 
   // top most viewed movies
   const popularMovie = movieData
@@ -13,8 +14,11 @@ export const movieData = jsonData => {
     popularMovie.pop();
   }
 
+  // feature movie
+  featureMovie.push(movieData[Math.floor(Math.random() * 20)]);
+
   movieData.mostViews = popularMovie;
-  movieData.feature = [popularMovie[3]];
+  movieData.feature = featureMovie;
 
   return movieData;
 };
