@@ -21,6 +21,15 @@ const FeatureMovie = props => {
   );
 };
 
+FeatureMovie.defaultProps = {
+  movies: [
+    {
+      title: 'Movie currently not available',
+      description: 'Coming soon...',
+    },
+  ],
+};
+
 FeatureMovie.propTypes = {
   movie: PropTypes.array,
 };
