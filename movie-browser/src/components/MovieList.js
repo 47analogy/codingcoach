@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Modal from './Modal';
 import {
   CardWrapper,
   Card,
@@ -12,7 +13,6 @@ const placeholderImg = 'https://picsum.photos/140/100';
 
 const MovieList = props => {
   const { movies } = props;
-
   return (
     <div>
       <CardWrapper>
@@ -24,6 +24,7 @@ const MovieList = props => {
                 <img src={placeholderImg} alt="placeholder" />
               </CardImage>
             </CardBody>
+            <Modal />
           </Card>
         ))}
       </CardWrapper>
