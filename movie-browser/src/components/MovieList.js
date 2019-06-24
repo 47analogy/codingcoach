@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modal from './Modal';
+import Button from './Button';
 import {
   CardWrapper,
   Card,
@@ -24,7 +24,10 @@ const MovieList = props => {
                 <img src={placeholderImg} alt="placeholder" />
               </CardImage>
             </CardBody>
-            <Modal />
+            <Button
+              buttonName={'Show Movie Details'}
+              onClick={props.showModal}
+            />
           </Card>
         ))}
       </CardWrapper>

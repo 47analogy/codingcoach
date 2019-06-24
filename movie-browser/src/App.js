@@ -13,7 +13,8 @@ class App extends Component {
     trendingMovies: [],
     featureMovie: [],
     showMovies: false,
-    buttonText: 'Show Movies', // no movies displaying on initial render
+    buttonText: 'Show Movies', // no movies displaying on initial render,
+    displayModal: false,
   };
 
   componentDidMount() {
@@ -39,6 +40,10 @@ class App extends Component {
     });
   };
 
+  openModal = event => {
+    console.log('modal will open', event);
+  };
+
   render() {
     const {
       allMovies,
@@ -54,10 +59,12 @@ class App extends Component {
         <h3>Feature Movie</h3>
         <FeatureMovie movies={featureMovie} />
         <h3>Most Viewed Movies</h3>
-        <MovieList movies={trendingMovies} />
+        <MovieList movies={trendingMovies} showModal={this.openModal} />
         <h3>All Movies</h3>
         <Button buttonName={buttonText} onClick={this.handleShowMovies} />
-        {showMovies && <MovieList movies={allMovies} />}
+        {showMovies && (
+          <MovieList movies={allMovies} showModal={this.openModal} />
+        )}
       </div>
     );
   }
