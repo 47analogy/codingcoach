@@ -4,6 +4,7 @@ import Button from './components/Button';
 import FeatureMovie from './components/FeatureMovie';
 import { fetchData } from './helpers/api';
 import { movieData } from './helpers/movieData';
+import Modal from './components/Modal';
 
 const URL = 'https://ghibliapi.herokuapp.com/films';
 
@@ -14,7 +15,8 @@ class App extends Component {
     featureMovie: [],
     showMovies: false,
     buttonText: 'Show Movies', // no movies displaying on initial render,
-    displayModal: false,
+    toggleModal: false,
+    modalMovie: [],
   };
 
   componentDidMount() {
@@ -40,8 +42,11 @@ class App extends Component {
     });
   };
 
-  openModal = event => {
-    console.log('modal will open', event);
+  openModal = movie => {
+    this.setState({
+      toggleModal: !this.state.toggleModal,
+      modalMovie: [movie],
+    });
   };
 
   render() {
@@ -51,20 +56,22 @@ class App extends Component {
       showMovies,
       trendingMovies,
       featureMovie,
+      toggleModal,
+      modalMovie,
     } = this.state;
-
     return (
       <div>
         <h1>Movie Browser</h1>
         <h3>Feature Movie</h3>
         <FeatureMovie movies={featureMovie} />
         <h3>Most Viewed Movies</h3>
-        <MovieList movies={trendingMovies} showModal={this.openModal} />
+        <MovieList movies={trendingMovies} modalClick={this.openModal} />
         <h3>All Movies</h3>
         <Button buttonName={buttonText} onClick={this.handleShowMovies} />
         {showMovies && (
-          <MovieList movies={allMovies} showModal={this.openModal} />
+          <MovieList movies={allMovies} modalClick={this.openModal} />
         )}
+        <Modal modalStatus={toggleModal} movieInfo={modalMovie} />
       </div>
     );
   }

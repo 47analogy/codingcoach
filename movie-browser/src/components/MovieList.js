@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
 import {
   CardWrapper,
   Card,
@@ -12,22 +11,18 @@ import {
 const placeholderImg = 'https://picsum.photos/140/100';
 
 const MovieList = props => {
-  const { movies } = props;
+  const { movies, modalClick } = props;
   return (
     <div>
       <CardWrapper>
         {movies.map(movie => (
-          <Card key={movie.id}>
+          <Card key={movie.id} onClick={() => modalClick(movie)}>
             <CardBody>
               <CardTitle>{movie.title}</CardTitle>
               <CardImage>
                 <img src={placeholderImg} alt="placeholder" />
               </CardImage>
             </CardBody>
-            <Button
-              buttonName={'Show Movie Details'}
-              onClick={props.showModal}
-            />
           </Card>
         ))}
       </CardWrapper>
