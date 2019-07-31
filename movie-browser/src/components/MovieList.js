@@ -11,13 +11,12 @@ import {
 const placeholderImg = 'https://picsum.photos/140/100';
 
 const MovieList = props => {
-  const { movies } = props;
-
+  const { movies, modalClick } = props;
   return (
     <div>
       <CardWrapper>
         {movies.map(movie => (
-          <Card key={movie.id}>
+          <Card key={movie.id} onClick={() => modalClick(movie)}>
             <CardBody>
               <CardTitle>{movie.title}</CardTitle>
               <CardImage>
